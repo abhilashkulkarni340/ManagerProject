@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "546095692000",
+    "firebase_url": "https://storelocator-75de1.firebaseio.com",
+    "project_id": "storelocator-75de1",
+    "storage_bucket": "storelocator-75de1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546095692000:android:9b797df9103d50b1",
+        "android_client_info": {
+          "package_name": "com.example.abhilashsk.storelocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546095692000-u79vsae6crsvqulfqmtq80j60pv3k7ib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abhilashsk.storelocator",
+            "certificate_hash": "2400ee1e195e86d042bb4e71824fa74f2051177a"
+          }
+        },
+        {
+          "client_id": "546095692000-plil9spqmbe2asnrh536hgoki58dodvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Vbx3La8JJ40LteDHWov55MMkEFjXe6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546095692000-plil9spqmbe2asnrh536hgoki58dodvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546095692000:android:4aa215fff2713d16",
+        "android_client_info": {
+          "package_name": "com.example.abhilashsk.storepartner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546095692000-7cocslpr65mrcrb8n4k0rloe9kulturt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abhilashsk.storepartner",
+            "certificate_hash": "2400ee1e195e86d042bb4e71824fa74f2051177a"
+          }
+        },
+        {
+          "client_id": "546095692000-plil9spqmbe2asnrh536hgoki58dodvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Vbx3La8JJ40LteDHWov55MMkEFjXe6Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546095692000-plil9spqmbe2asnrh536hgoki58dodvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
