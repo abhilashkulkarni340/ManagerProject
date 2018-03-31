@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter adapter;
     Double my_lat,my_lon;
+    String opentime="10:00",closetime="21:00",delivery="NO";
+    Double rating=3.5;
     FirebaseFirestore mDBRef=FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         store.put("phone",phone.getText().toString());
         store.put("latitude",my_lat);
         store.put("longitude",my_lon);
+        store.put("rating",rating);
+        store.put("opentime",opentime);
+        store.put("closetime",closetime);
+        store.put("delivery",delivery);
 
         mDBRef.collection("storedata").document(shopid.getText().toString())
         .set(store).addOnSuccessListener(new OnSuccessListener<Void>() {

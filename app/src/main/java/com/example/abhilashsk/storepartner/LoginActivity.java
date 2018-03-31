@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username,password;
     String user,pass,pass2,shopid;
     SharedPreferences mypref;
+    ProgressBar progressBarLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     public void loginFunction(View view) {
         username=(EditText)findViewById(R.id.username_login);
         password=(EditText)findViewById(R.id.password_login);
+        progressBarLogin=(ProgressBar)findViewById(R.id.progressBarLogin);
+        progressBarLogin.setVisibility(View.VISIBLE);
         user=username.getText().toString();
         pass=password.getText().toString();
         if(user.equals("")||pass.equals("")){
@@ -54,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i=new Intent(LoginActivity.this,DashboardStoreActivity.class);
                     i.putExtra("shopid",shopid);
                     startActivity(i);
+                    progressBarLogin.setVisibility(View.INVISIBLE);
                 }
             }
         });
