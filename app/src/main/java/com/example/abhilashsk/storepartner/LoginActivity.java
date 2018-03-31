@@ -3,6 +3,8 @@ package com.example.abhilashsk.storepartner;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,15 +34,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginFunction(View view) {
-        username=(EditText)findViewById(R.id.username_login);
-        password=(EditText)findViewById(R.id.password_login);
-        progressBarLogin=(ProgressBar)findViewById(R.id.progressBarLogin);
-        progressBarLogin.setVisibility(View.VISIBLE);
+        initViews();
         user=username.getText().toString();
         pass=password.getText().toString();
         if(user.equals("")||pass.equals("")){
             return;
         }
+
         mDBRef.collection("storedata").whereEqualTo("username",user)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -61,7 +62,20 @@ public class LoginActivity extends AppCompatActivity {
                     progressBarLogin.setVisibility(View.INVISIBLE);
                 }
             }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(LoginActivity.this,"Failed to fetch data from the database!",Toast.LENGTH_SHORT).show();
+            }
         });
+    }
+
+    public void initViews(){
+        username=(EditText)findViewById(R.id.username_login);
+        password=(EditText)findViewById(R.id.password_login);
+        progressBarLogin=(ProgressBar)findViewById(R.id.progressBarLogin);
+        progressBarLogin.setVisibility(View.VISIBLE);
     }
 
     public void registerFunction(View view) {

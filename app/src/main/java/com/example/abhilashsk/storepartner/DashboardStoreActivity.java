@@ -3,6 +3,7 @@ package com.example.abhilashsk.storepartner;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -56,16 +58,18 @@ public class DashboardStoreActivity extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
                         for(DocumentSnapshot ds:queryDocumentSnapshots){
-                            name=ds.getString("name");
-                            //username=ds.getString("username");
-                            category=ds.getString("category");
-                            location=ds.getString("address");
-                            phone=ds.getString("phone");
-                            shopid=ds.getString("id");
-                            rating=ds.getDouble("rating");
-                            opentime=ds.getString("opentime");
-                            closetime=ds.getString("closetime");
-                            delivery=ds.getString("delivery");
+                            if(ds.exists()) {
+                                name = ds.getString("name");
+                                //username=ds.getString("username");
+                                category = ds.getString("category");
+                                location = ds.getString("address");
+                                phone = ds.getString("phone");
+                                shopid = ds.getString("id");
+                                rating = ds.getDouble("rating");
+                                opentime = ds.getString("opentime");
+                                closetime = ds.getString("closetime");
+                                delivery = ds.getString("delivery");
+                            }
                         }
                         dname.setText(name);
                         dcategory.setText(category);
@@ -78,7 +82,13 @@ public class DashboardStoreActivity extends AppCompatActivity {
                         ddelivery.setText(delivery);
                         progressBarDash.setVisibility(View.INVISIBLE);
                     }
-                });
+                })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DashboardStoreActivity.this,"Failed to retrieve data!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void backpress(View view) {
@@ -178,6 +188,12 @@ public class DashboardStoreActivity extends AppCompatActivity {
                         Toast.makeText(DashboardStoreActivity.this,"Update successful",Toast.LENGTH_SHORT).show();
                         removeFocus();
                         progressBarDash.setVisibility(View.INVISIBLE);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(DashboardStoreActivity.this,"Failed to update data. Try Again!",Toast.LENGTH_SHORT).show();
                     }
                 });
     }
