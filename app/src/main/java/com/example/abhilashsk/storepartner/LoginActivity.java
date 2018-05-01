@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("password",pass);
                     editor.putString("id",shopid);
                     editor.apply();
-                    Intent i=new Intent(LoginActivity.this,DashboardStoreActivity.class);
+                    Intent i=new Intent(LoginActivity.this,DashboardActivity.class);
                     i.putExtra("shopid",shopid);
                     startActivity(i);
                     progressBarLogin.setVisibility(View.INVISIBLE);
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,"Login First!",Toast.LENGTH_SHORT).show();
             return;
         }else{
-            Intent i=new Intent(LoginActivity.this,DashboardStoreActivity.class);
+            Intent i=new Intent(LoginActivity.this,DashboardActivity.class);
             i.putExtra("shopid",shopid);
             startActivity(i);
         }

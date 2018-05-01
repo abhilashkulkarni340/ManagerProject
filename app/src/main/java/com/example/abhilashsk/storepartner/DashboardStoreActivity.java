@@ -92,10 +92,7 @@ public class DashboardStoreActivity extends AppCompatActivity {
     }
 
     public void backpress(View view) {
-        SharedPreferences.Editor editor=mypref.edit();
-        editor.clear();
-        editor.apply();
-        Intent i=new Intent(this,LoginActivity.class);
+        Intent i=new Intent(this,DashboardActivity.class);
         startActivity(i);
     }
 

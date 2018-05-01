@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBarRegister;
     Double my_lat,my_lon;
     String opentime="10:00",closetime="21:00",delivery="NO";
+    Integer currorderid=0;
     Double rating=3.5;
     FirebaseFirestore mDBRef=FirebaseFirestore.getInstance();
     Validator validator;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        storeData();
+                        Toast.makeText(MainActivity.this,"Database Failure",Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         store.put("opentime",opentime);
         store.put("closetime",closetime);
         store.put("delivery",delivery);
+        store.put("currorderid",currorderid);
 
         mDBRef.collection("storedata").document(shopid.getText().toString())
                 .set(store).addOnSuccessListener(new OnSuccessListener<Void>() {
